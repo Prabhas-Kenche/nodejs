@@ -26,15 +26,6 @@ const initializeDBAndServer = async () => {
 }
 initializeDBAndServer()
 
-const convertDbObjectToResponseObject = dbObject => {
-  return {
-    playerId: dbObject.player_id,
-    playerName: dbObject.player_name,
-    jerseyNumber: dbObject.jersey_number,
-    role: dbObject.role,
-  }
-}
-
 //API 1
 app.get('/players/', async (request, response) => {
   const getPlayersQuery = `
@@ -68,23 +59,6 @@ app.post('/players/', async (request, response) => {
 })
 
 //API - 3
-app.get('/players/:playerId/', async (request, response) => {
-  const {playerId} = request.params
-  const getPlayerQuery = `
-  SELECT
-  *
-  FROM
-  cricket_team
-  WHERE
-  player_id = ${playerId};`
-  const playersArray = await db.all(getPlayerQuery)
-  const lists = playersArray.map(eachPlayer =>
-    convertDbObjectToResponseObject(eachPlayer),
-  )
-  response.send(lists[0])
-})
-
-//API - 4
 app.put('/players/:playerId/', async (request, response) => {
   const {playerName, jerseyNumber, role} = request.body
   const {playerId} = request.params
@@ -102,7 +76,7 @@ app.put('/players/:playerId/', async (request, response) => {
   response.send('Player Details Updated')
 })
 
-//API - 5
+//API - 4
 app.delete('/players/:playerId/', async (request, response) => {
   const {playerId} = request.params
   const deletePlayerQuery = `
