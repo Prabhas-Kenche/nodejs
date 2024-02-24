@@ -66,27 +66,6 @@ Player Added to Team
 
 #### Path: `/players/:playerId/`
 
-#### Method: `GET`
-
-#### Description:
-
-Returns a player based on a player ID
-
-#### Response
-
-```
-{
-  playerId: 1,
-  playerName: "Lakshman",
-  jerseyNumber: 5,
-  role: "All-rounder"
-}
-```
-
-### API 4
-
-#### Path: `/players/:playerId/`
-
 #### Method: `PUT`
 
 #### Description:
@@ -110,7 +89,7 @@ Player Details Updated
 
 ```
 
-### API 5
+### API 4
 
 #### Path: `/players/:playerId/`
 
@@ -129,10 +108,3 @@ Player Removed
 <br/>
 
 Use `npm install` to install the packages.
-
-**Export the express instance using the default export syntax.**
-
-**Use Common JS module syntax.**
-# coding-practice-4
-# nodejs
-# nodejs
